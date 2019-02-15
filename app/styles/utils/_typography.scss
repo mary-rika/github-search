@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:400,500,700");
+
+$thin: 400;
+$regular: 500;
+$bold: 700;
+
+.bold {
+  font-weight: $bold !important;
+}
+
+.thin {
+  font-weight: $thin !important;
+}
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($fs-font-size);
+    } @else {
+
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+@mixin make-font-size($fs-font-size) {
+
+  @if type-of($fs-font-size) == "list" {
+    font-size: nth($fs-font-size, 1);
+
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+  } @else {
+    font-size: $fs-font-size;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+  font-weight: $regular;
+  font-family: Rajdhani, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  font-size: 15px;
+  font-family: Rajdhani, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
