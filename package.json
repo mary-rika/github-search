@@ -90,7 +90,10 @@
     "reselect": "4.0.0",
     "sanitize.css": "4.1.0",
     "styled-components": "4.0.2",
-    "warning": "4.0.2"
+    "warning": "4.0.2",
+    "node-sass": "^4.11.0",
+    "remarkable": "^1.7.1",
+    "sass-loader": "^7.1.0"
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
